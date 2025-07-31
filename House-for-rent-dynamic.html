@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>House Details</title>
+  <link rel="stylesheet" href="idea1.css">
+  <style>
+    .details-box {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .details-box h2 {
+      text-align: center;
+    }
+    .details-box p {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    .details-box img {
+      width: 100%;
+      border-radius: 10px;
+      height: 400px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body class="background">
+
+  <nav class="bar background">
+    <ul class="nav overlay">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="house.html">Back to List</a></li>
+    </ul>
+  </nav>
+
+  <div class="details-box" id="houseDetails">
+    <!-- JS will fill this -->
+  </div>
+
+  <script>
+    const houses = [
+      {
+        id: 1,
+        title: "2 BHK in Saket",
+        area: "Saket",
+        rent: 13000,
+        location: "Flat 22B, Saket Lane, South Delhi",
+        phone: "+91-9876543210",
+        ownerLives: "No",
+        parking: "Yes",
+        water: "24/7",
+        electricity: "No power cuts",
+        img: "https://source.unsplash.com/800x400/?house,delhi"
+      },
+      {
+        id: 2,
+        title: "1 BHK in Rohini Sector 11",
+        area: "Rohini Sector 11",
+        rent: 15000,
+        location: "House 78A, Rohini Sector 11, Delhi",
+        phone: "+91-9811122233",
+        ownerLives: "Yes",
+        parking: "Yes",
+        water: "Good",
+        electricity: "Stable",
+        img: "https://source.unsplash.com/800x400/?apartment,delhi"
+      },
+      {
+        id: 3,
+        title: "2 BHK in Dwarka Sector 8",
+        area: "Dwarka Sector 8",
+        rent: 12000,
+        location: "DDA Flat 43, Dwarka Sector 8, Delhi",
+        phone: "+91-9955443322",
+        ownerLives: "No",
+        parking: "No",
+        water: "24/7",
+        electricity: "Backup inverter",
+        img: "https://source.unsplash.com/800x400/?house,dwarka"
+      },
+      {
+        id: 4,
+        title: "3 BHK in DLF Phase 3",
+        area: "DLF Phase 3",
+        rent: 18000,
+        location: "Villa 112, DLF Phase 3, Gurgaon",
+        phone: "+91-9999999999",
+        ownerLives: "No",
+        parking: "Yes",
+        water: "24/7 with storage",
+        electricity: "Generator backup",
+        img: "https://source.unsplash.com/800x400/?house,gurgaon"
+      },
+      {
+        id: 5,
+        title: "2 BHK in Sushant Lok",
+        area: "Sushant Lok",
+        rent: 16000,
+        location: "Block C, Sushant Lok 1, Gurgaon",
+        phone: "+91-9123456789",
+        ownerLives: "Yes",
+        parking: "Yes",
+        water: "Adequate",
+        electricity: "No cuts",
+        img: "https://source.unsplash.com/800x400/?villa,gurgaon"
+      },
+      {
+        id: 6,
+        title: "1 BHK in Sector 56 Gurgaon",
+        area: "Sector 56 Gurgaon",
+        rent: 14000,
+        location: "House 21A, Sector 56, Gurgaon",
+        phone: "+91-9012345678",
+        ownerLives: "Yes",
+        parking: "No",
+        water: "Regular",
+        electricity: "Stable",
+        img: "https://source.unsplash.com/800x400/?home,gurgaon"
+      },
+      {
+        id: 7,
+        title: "Room in Saket",
+        area: "Saket",
+        rent: 12500,
+        location: "Room 3A, Saket Block D, Delhi",
+        phone: "+91-9090909090",
+        ownerLives: "Yes",
+        parking: "No",
+        water: "24 hours",
+        electricity: "Backup inverter",
+        img: "https://source.unsplash.com/800x400/?room,delhi"
+      },
+      {
+        id: 8,
+        title: "Flat in Rohini Sector 11",
+        area: "Rohini Sector 11",
+        rent: 13500,
+        location: "Flat 5B, Rohini Sec-11, Delhi",
+        phone: "+91-9876543212",
+        ownerLives: "No",
+        parking: "Yes",
+        water: "Stable",
+        electricity: "Stable",
+        img: "https://source.unsplash.com/800x400/?flat,delhi"
+      },
+      {
+        id: 9,
+        title: "3 BHK in DLF Phase 3",
+        area: "DLF Phase 3",
+        rent: 15500,
+        location: "House 9C, DLF Phase 3, Gurgaon",
+        phone: "+91-9823456123",
+        ownerLives: "Yes",
+        parking: "Yes",
+        water: "Excellent",
+        electricity: "No cuts",
+        img: "https://source.unsplash.com/800x400/?property,gurgaon"
+      }
+    ];
+
+    function getHouseIdFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      return parseInt(params.get("id"));
+    }
+
+    function loadHouseDetails() {
+      const id = getHouseIdFromURL();
+      const house = houses.find(h => h.id === id);
+
+      if (!house) {
+        document.getElementById("houseDetails").innerHTML = `<p>House not found</p>`;
+        return;
+      }
+
+      const html = `
+        <h2>${house.title}</h2>
+        <img src="${house.img}" alt="House Image" />
+        <p><strong>Rent:</strong> ₹${house.rent}/month</p>
+        <p><strong>Location:</strong> ${house.location}</p>
+        <p><strong>Phone:</strong> ${house.phone}</p>
+        <p><strong>Owner Lives There:</strong> ${house.ownerLives}</p>
+        <p><strong>Parking Available:</strong> ${house.parking}</p>
+        <p><strong>Water Supply:</strong> ${house.water}</p>
+        <p><strong>Electricity:</strong> ${house.electricity}</p>
+      `;
+
+      document.getElementById("houseDetails").innerHTML = html;
+    }
+
+    loadHouseDetails();
+  </script>
+
+</body>
+</html>
