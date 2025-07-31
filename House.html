@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website</title>
+    <link rel="stylesheet" href="idea1.css">
+</head>
+<body>
+    <nav class="bar background">
+        <u class="nav overlay">
+            <u></u><li > <a href="#home">Home</a> </li>
+            <li> <a href="#about">About</a> </li>
+            <button class="toggle-btn " onclick="toggleMenu()"> Service</button>
+            <div class="dropdown-menu" id="dropdownMenu">
+              <a href="House.html" target="_blank" rel="noreferrer">House for Rent</a>
+              <a href="House copy 2.html">Tiffin Service</a>
+              <a href="House copy.html" target="_blank" rel="noreferrer">Maid</a>
+              <a href="House copy 3.html">Electrician</a>
+            </div>
+            <li> <a href="#contact">Contact Us</a> </li></u>
+        </ul>
+        <div class="styling">
+            <input type="text" name="search" id="search" placeholder="&#128269" >
+            <button class="btn sml-btn" title="Search button" onclick=" alert('We got you my dawg, hehe!! (^_^)')">Search here</button>
+        </div>
+    </nav> 
+    <section class="background section2" id="home">
+        
+            <p id="demo"></p>  </div>
+        <div class="mainbox">
+            
+            <div class="first">
+                <p class="one">All your Household needs ends here!</p>
+               <div class="abc">
+                </div>
+            </div>
+        </div>
+        
+
+    </section><hr class="ruler">
+    <section class="section2" id="about">
+        <br><br><br><br>
+        <br>
+        <h1 class="heading">Why us?</h1>
+    </section>
+    <hr class="ruler">
+    <section class="new" id="contact">
+        <h2 class="text">Contact Us</h2>
+     <div class="form">
+        <input name="name" class="form-input" type="text"  id="text" placeholder="Enter your Name..">
+        <input name="phone" class="form-input" type="text" id="phone" placeholder="Enter your Mobile Number..">
+        <input name="email" class="form-input" type="email" id="email" placeholder="Enter your E-mail..">
+        <textarea class="form-input" name="textarea" id="textarea" rows="6" cols="20" placeholder="Why do you want to contact us "></textarea>
+        <button class="btn drk-btn">submit</button>
+        <br>
+        <br>
+     </div>  
+    </section>
+    <footer class="background">
+    <p class="footer">
+        Copyright &copy; 2030 www.Mysite.com-All rights reserved
+    </p>
+    </footer>
+    
+    
+</body>
+<script >
+     function toggleMenu() {
+      const menu = document.getElementById('dropdownMenu');
+      menu.classList.toggle('show');
+    }
+</script>
+</html>
